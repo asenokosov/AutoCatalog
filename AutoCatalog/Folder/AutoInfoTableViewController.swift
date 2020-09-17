@@ -19,7 +19,6 @@ class AutoInfoTableViewController: UITableViewController {
     @IBOutlet weak var manufacturerField: UITextField!
     @IBOutlet weak var yearField: UITextField!
     @IBOutlet weak var carcaseField: UITextField!
-    @IBOutlet weak var colorField: UITextField!
     
     @IBOutlet weak var imageAuto: UIImageView!
     
@@ -32,12 +31,11 @@ class AutoInfoTableViewController: UITableViewController {
         manufacturerField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         yearField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         carcaseField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        colorField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         editCell()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 0 {
+        if indexPath.row == 4 {
             let photoIcon = #imageLiteral(resourceName: "camera")
             let cameraIcon = #imageLiteral(resourceName: "camera")
             
@@ -65,8 +63,6 @@ class AutoInfoTableViewController: UITableViewController {
         }
     }
     
-    
-    
     func savePlace() {
         var image: UIImage?
         
@@ -77,14 +73,13 @@ class AutoInfoTableViewController: UITableViewController {
         }
         
         let imageAuto = image?.pngData()
-        let newAuto = AutoDataBase(nameAuto: nameAutoField.text!, yearAuto: yearField.text, imageAuto: imageAuto, colorAuto: colorField.text, carcaseAuto: carcaseField.text, manufacturerAuto: manufacturerField.text)
+        let newAuto = AutoDataBase(nameAuto: nameAutoField.text!, yearAuto: yearField.text, imageAuto: imageAuto, carcaseAuto: carcaseField.text, manufacturerAuto: manufacturerField.text)
         
         if currentAuto != nil {
             try! realm.write() {
                 currentAuto?.nameAuto = newAuto.nameAuto
                 currentAuto?.yearAuto = newAuto.yearAuto
                 currentAuto?.imageAuto = newAuto.imageAuto
-                currentAuto?.colorAuto = newAuto.colorAuto
                 currentAuto?.carcaseAuto = newAuto.carcaseAuto
                 currentAuto?.manufacturerAuto = newAuto.manufacturerAuto
             }
@@ -93,8 +88,10 @@ class AutoInfoTableViewController: UITableViewController {
             SaveManager.saveObject(newAuto)
         }
     }
+    
     private func editCell() {
         if currentAuto != nil {
+            editNavigationBar()
             imageIsChanged = true
             guard let data = currentAuto?.imageAuto, let image = UIImage(data: data) else { return }
             imageAuto.image = image
@@ -102,10 +99,18 @@ class AutoInfoTableViewController: UITableViewController {
             yearField.text = currentAuto?.yearAuto
             carcaseField.text = currentAuto?.carcaseAuto
             manufacturerField.text = currentAuto?.manufacturerAuto
-            colorField.text = currentAuto?.colorAuto
         }
     }
-    @IBAction func cancelButton(_ sender: Any) {
+    private func editNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem{
+            topItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
+            }
+        navigationItem.leftBarButtonItem = nil
+        title = currentAuto?.nameAuto
+        saveButton.isEnabled = true
+    }
+    
+    @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true)
     }
 }
@@ -124,7 +129,6 @@ extension AutoInfoTableViewController: UIImagePickerControllerDelegate, UINaviga
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imageAuto.image = info[.editedImage] as? UIImage
-        imageAuto.contentMode = .scaleToFill
         imageAuto.clipsToBounds = true
         imageIsChanged = true
         

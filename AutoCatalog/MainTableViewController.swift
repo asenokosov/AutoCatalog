@@ -11,10 +11,6 @@ import RealmSwift
 
 class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     
-    func updateSearchResults(for searchController: UISearchController) {
-        tableView.reloadData()
-    }
-    
     private var autoDataBase: Results<AutoDataBase>!
     private var filteredAuto: Results<AutoDataBase>!
     
@@ -40,14 +36,28 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         definesPresentationContext = true
     }
     
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredCars(searchController.searchBar.text!)
+        tableView.reloadData()
+    }
+    
+    private func filteredCars(_ searchText: String) {
+        filteredAuto = autoDataBase.filter("nameAuto CONTAINS[c] %@ OR yearAuto CONTAINS[c] %@", searchText , searchText)
+        tableView.reloadData()
+    }
+    
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredAuto.count
+        }
         return autoDataBase.isEmpty ? 0 : autoDataBase.count
       }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         
-        let newAutoAdd = autoDataBase[indexPath.row]
+        let newAutoAdd = isFiltering ? filteredAuto[indexPath.row] : autoDataBase[indexPath.row]
         
         cell.nameAuto.text = newAutoAdd.nameAuto
         cell.yearAuto.text = newAutoAdd.yearAuto
@@ -62,12 +72,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let auto: AutoDataBase
-            if isFiltering {
-                auto = filteredAuto[indexPath.row]
-            } else {
-                auto = autoDataBase[indexPath.row]
-            }
+            let auto = isFiltering ? filteredAuto[indexPath.row] : autoDataBase[indexPath.row]
             let newAutoVC = segue.destination as! AutoInfoTableViewController
             newAutoVC.currentAuto = auto
         }
@@ -81,7 +86,6 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
 }
 
 
-
 extension MainTableViewController: UISearchBarDelegate {
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         if searchBar.text == "" {
@@ -93,3 +97,4 @@ extension MainTableViewController: UISearchBarDelegate {
         navigationController?.hidesBarsOnSwipe = true
     }
 }
+

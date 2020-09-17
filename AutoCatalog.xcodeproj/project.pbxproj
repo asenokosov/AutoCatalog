@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		50868484484CFD275F869F35 /* Pods_AutoCatalog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B530AF8D35425E09AD551C /* Pods_AutoCatalog.framework */; };
-		6306EC6F1BC5C0593A7A15EE /* Pods_AutoCatalogTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3698F54B4CD8F6D21413705 /* Pods_AutoCatalogTests.framework */; };
-		7438861718455B03B3A221E9 /* Pods_AutoCatalog_AutoCatalogUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63911355B24491D4DA1D8AD0 /* Pods_AutoCatalog_AutoCatalogUITests.framework */; };
 		C3132A0D251066E50092D5F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3132A0C251066E50092D5F4 /* AppDelegate.swift */; };
 		C3132A0F251066E50092D5F4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3132A0E251066E50092D5F4 /* SceneDelegate.swift */; };
 		C3132A14251066E50092D5F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3132A12251066E50092D5F4 /* Main.storyboard */; };
@@ -43,13 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4A7592A7561D5F30E88964BB /* Pods-AutoCatalogTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCatalogTests.debug.xcconfig"; path = "Target Support Files/Pods-AutoCatalogTests/Pods-AutoCatalogTests.debug.xcconfig"; sourceTree = "<group>"; };
-		63911355B24491D4DA1D8AD0 /* Pods_AutoCatalog_AutoCatalogUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoCatalog_AutoCatalogUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6ECB2B937D2B2CE1D3173917 /* Pods-AutoCatalog-AutoCatalogUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCatalog-AutoCatalogUITests.release.xcconfig"; path = "Target Support Files/Pods-AutoCatalog-AutoCatalogUITests/Pods-AutoCatalog-AutoCatalogUITests.release.xcconfig"; sourceTree = "<group>"; };
-		798B7FBF2F5B172590F2D961 /* Pods-AutoCatalog-AutoCatalogUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCatalog-AutoCatalogUITests.debug.xcconfig"; path = "Target Support Files/Pods-AutoCatalog-AutoCatalogUITests/Pods-AutoCatalog-AutoCatalogUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		83B530AF8D35425E09AD551C /* Pods_AutoCatalog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoCatalog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA341B1D836E17AA336170BD /* Pods-AutoCatalog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCatalog.debug.xcconfig"; path = "Target Support Files/Pods-AutoCatalog/Pods-AutoCatalog.debug.xcconfig"; sourceTree = "<group>"; };
-		B70A8938CE1A44A01B428804 /* Pods-AutoCatalogTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCatalogTests.release.xcconfig"; path = "Target Support Files/Pods-AutoCatalogTests/Pods-AutoCatalogTests.release.xcconfig"; sourceTree = "<group>"; };
 		BCE148DFCFC5172B407FBCA1 /* Pods-AutoCatalog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AutoCatalog.release.xcconfig"; path = "Target Support Files/Pods-AutoCatalog/Pods-AutoCatalog.release.xcconfig"; sourceTree = "<group>"; };
 		C3132A09251066E50092D5F4 /* AutoCatalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoCatalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3132A0C251066E50092D5F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,7 +63,6 @@
 		C322BC1B25107BA3001E36A3 /* AutoInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoInfoTableViewController.swift; sourceTree = "<group>"; };
 		C3A27D1C2511FA8100A4DFB6 /* AutoDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoDB.swift; sourceTree = "<group>"; };
 		C3A27D1E2512099D00A4DFB6 /* SaveManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveManager.swift; sourceTree = "<group>"; };
-		F3698F54B4CD8F6D21413705 /* Pods_AutoCatalogTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AutoCatalogTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6306EC6F1BC5C0593A7A15EE /* Pods_AutoCatalogTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7438861718455B03B3A221E9 /* Pods_AutoCatalog_AutoCatalogUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,8 +95,6 @@
 			isa = PBXGroup;
 			children = (
 				83B530AF8D35425E09AD551C /* Pods_AutoCatalog.framework */,
-				63911355B24491D4DA1D8AD0 /* Pods_AutoCatalog_AutoCatalogUITests.framework */,
-				F3698F54B4CD8F6D21413705 /* Pods_AutoCatalogTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -183,10 +171,6 @@
 			children = (
 				AA341B1D836E17AA336170BD /* Pods-AutoCatalog.debug.xcconfig */,
 				BCE148DFCFC5172B407FBCA1 /* Pods-AutoCatalog.release.xcconfig */,
-				798B7FBF2F5B172590F2D961 /* Pods-AutoCatalog-AutoCatalogUITests.debug.xcconfig */,
-				6ECB2B937D2B2CE1D3173917 /* Pods-AutoCatalog-AutoCatalogUITests.release.xcconfig */,
-				4A7592A7561D5F30E88964BB /* Pods-AutoCatalogTests.debug.xcconfig */,
-				B70A8938CE1A44A01B428804 /* Pods-AutoCatalogTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -217,7 +201,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3132A39251066EA0092D5F4 /* Build configuration list for PBXNativeTarget "AutoCatalogTests" */;
 			buildPhases = (
-				086A9C51DF4ADF8667A8B00B /* [CP] Check Pods Manifest.lock */,
 				C3132A1E251066EA0092D5F4 /* Sources */,
 				C3132A1F251066EA0092D5F4 /* Frameworks */,
 				C3132A20251066EA0092D5F4 /* Resources */,
@@ -236,11 +219,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C3132A3C251066EA0092D5F4 /* Build configuration list for PBXNativeTarget "AutoCatalogUITests" */;
 			buildPhases = (
-				9AF279EA456E8DA4E31F3024 /* [CP] Check Pods Manifest.lock */,
 				C3132A29251066EA0092D5F4 /* Sources */,
 				C3132A2A251066EA0092D5F4 /* Frameworks */,
 				C3132A2B251066EA0092D5F4 /* Resources */,
-				8D5DB3671134BCDB2B9E9389 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -323,28 +304,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		086A9C51DF4ADF8667A8B00B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AutoCatalogTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		312C50E61E04354352299686 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,45 +320,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-AutoCatalog-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8D5DB3671134BCDB2B9E9389 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AutoCatalog-AutoCatalogUITests/Pods-AutoCatalog-AutoCatalogUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AutoCatalog-AutoCatalogUITests/Pods-AutoCatalog-AutoCatalogUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AutoCatalog-AutoCatalogUITests/Pods-AutoCatalog-AutoCatalogUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9AF279EA456E8DA4E31F3024 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AutoCatalog-AutoCatalogUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -644,7 +564,6 @@
 		};
 		C3132A3A251066EA0092D5F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A7592A7561D5F30E88964BB /* Pods-AutoCatalogTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -666,7 +585,6 @@
 		};
 		C3132A3B251066EA0092D5F4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B70A8938CE1A44A01B428804 /* Pods-AutoCatalogTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -688,7 +606,6 @@
 		};
 		C3132A3D251066EA0092D5F4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 798B7FBF2F5B172590F2D961 /* Pods-AutoCatalog-AutoCatalogUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -708,7 +625,6 @@
 		};
 		C3132A3E251066EA0092D5F4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6ECB2B937D2B2CE1D3173917 /* Pods-AutoCatalog-AutoCatalogUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

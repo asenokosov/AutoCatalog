@@ -119,7 +119,10 @@
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="укажите наименование" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rfH-T7-3Lq">
                                                             <rect key="frame" x="0.0" y="29.5" width="343" height="32.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="FcR-I1-jRw" id="CSf-SZ-xeR"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
@@ -160,7 +163,10 @@
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="укажите производителя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OQK-gi-TvR">
                                                             <rect key="frame" x="0.0" y="30.5" width="343" height="33.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="FcR-I1-jRw" id="4gM-qp-qBy"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
@@ -201,7 +207,10 @@
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="укажите год изготовления" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DVL-rp-ShL">
                                                             <rect key="frame" x="0.0" y="30.5" width="343" height="33.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="FcR-I1-jRw" id="wAF-P1-zv2"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
@@ -242,7 +251,10 @@
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="укажите тип кузова" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="omC-Hf-gEh">
                                                             <rect key="frame" x="0.0" y="30.5" width="343" height="33.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
+                                                            <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                            <connections>
+                                                                <outlet property="delegate" destination="FcR-I1-jRw" id="sPT-vK-2C6"/>
+                                                            </connections>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
@@ -264,69 +276,30 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="84" id="4jX-8A-m3q">
-                                        <rect key="frame" x="0.0" y="364" width="375" height="84"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4jX-8A-m3q" id="P5d-nA-scN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="84"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="owN-nx-sdH">
-                                                    <rect key="frame" x="16" y="10" width="343" height="64"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Цвет кузова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K2v-7C-Ohw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="343" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="укажите цвет изделия" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a6D-Q8-zJ4">
-                                                            <rect key="frame" x="0.0" y="30.5" width="343" height="33.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits"/>
-                                                        </textField>
-                                                    </subviews>
-                                                    <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="K2v-7C-Ohw" secondAttribute="trailing" id="05r-iQ-v3n"/>
-                                                        <constraint firstAttribute="bottom" secondItem="a6D-Q8-zJ4" secondAttribute="bottom" id="LiY-B8-LN1"/>
-                                                        <constraint firstItem="a6D-Q8-zJ4" firstAttribute="leading" secondItem="owN-nx-sdH" secondAttribute="leading" id="dXO-DJ-JI6"/>
-                                                        <constraint firstItem="K2v-7C-Ohw" firstAttribute="top" secondItem="owN-nx-sdH" secondAttribute="top" id="gMk-gk-gfg"/>
-                                                        <constraint firstItem="a6D-Q8-zJ4" firstAttribute="top" secondItem="K2v-7C-Ohw" secondAttribute="bottom" constant="10" id="mff-B3-heg"/>
-                                                        <constraint firstAttribute="trailing" secondItem="a6D-Q8-zJ4" secondAttribute="trailing" id="n9u-zT-4ng"/>
-                                                        <constraint firstItem="K2v-7C-Ohw" firstAttribute="leading" secondItem="owN-nx-sdH" secondAttribute="leading" id="sqa-Rc-xjZ"/>
-                                                    </constraints>
-                                                </stackView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="owN-nx-sdH" secondAttribute="trailing" constant="16" id="4Hd-qa-QU4"/>
-                                                <constraint firstItem="owN-nx-sdH" firstAttribute="leading" secondItem="P5d-nA-scN" secondAttribute="leading" constant="16" id="Ex5-5h-fnp"/>
-                                                <constraint firstItem="owN-nx-sdH" firstAttribute="top" secondItem="P5d-nA-scN" secondAttribute="top" constant="10" id="S5z-Wl-euk"/>
-                                                <constraint firstAttribute="bottom" secondItem="owN-nx-sdH" secondAttribute="bottom" constant="10" id="zF9-Gm-6Bk"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="150" id="UkG-ou-qO7">
-                                        <rect key="frame" x="0.0" y="448" width="375" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="250" id="UkG-ou-qO7">
+                                        <rect key="frame" x="0.0" y="364" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UkG-ou-qO7" id="MOt-Xj-Qiy">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="U1H-cS-bS9">
-                                                    <rect key="frame" x="16" y="11" width="343" height="128"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="U1H-cS-bS9">
+                                                    <rect key="frame" x="16" y="6" width="343" height="238"/>
                                                     <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="U1H-cS-bS9" firstAttribute="centerY" secondItem="MOt-Xj-Qiy" secondAttribute="centerY" id="52u-Nx-F4f"/>
-                                                <constraint firstItem="U1H-cS-bS9" firstAttribute="centerX" secondItem="MOt-Xj-Qiy" secondAttribute="centerX" id="7Gr-WN-TJC"/>
-                                                <constraint firstItem="U1H-cS-bS9" firstAttribute="bottom" secondItem="MOt-Xj-Qiy" secondAttribute="bottomMargin" id="bCz-ou-ZHO"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="U1H-cS-bS9" secondAttribute="trailing" id="eix-2h-WRB"/>
-                                                <constraint firstItem="U1H-cS-bS9" firstAttribute="leading" secondItem="MOt-Xj-Qiy" secondAttribute="leadingMargin" id="kgj-cT-tOu"/>
-                                                <constraint firstItem="U1H-cS-bS9" firstAttribute="top" secondItem="MOt-Xj-Qiy" secondAttribute="topMargin" id="pTT-w4-uOF"/>
+                                                <constraint firstItem="U1H-cS-bS9" firstAttribute="leading" secondItem="MOt-Xj-Qiy" secondAttribute="leadingMargin" id="WYd-go-7hr"/>
+                                                <constraint firstItem="U1H-cS-bS9" firstAttribute="bottom" secondItem="MOt-Xj-Qiy" secondAttribute="bottomMargin" constant="5" id="bCz-ou-ZHO"/>
+                                                <constraint firstItem="U1H-cS-bS9" firstAttribute="trailing" secondItem="MOt-Xj-Qiy" secondAttribute="trailingMargin" id="jHz-Or-jww"/>
+                                                <constraint firstItem="U1H-cS-bS9" firstAttribute="top" secondItem="MOt-Xj-Qiy" secondAttribute="topMargin" constant="-5" id="pTT-w4-uOF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="U1H-cS-bS9" firstAttribute="centerY" secondItem="UkG-ou-qO7" secondAttribute="centerY" id="KUf-Ge-Ve3"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -337,9 +310,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="gXG-XH-47q">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="Nob-x4-b0p">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Nob-x4-b0p">
                             <connections>
-                                <action selector="cancelButton:" destination="FcR-I1-jRw" id="zdM-Md-Fmq"/>
+                                <action selector="cancelAction:" destination="FcR-I1-jRw" id="WWS-ml-VLc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="o7D-h5-nIy">
@@ -350,8 +323,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="carcaseField" destination="omC-Hf-gEh" id="f9w-pD-Ncv"/>
-                        <outlet property="colorField" destination="a6D-Q8-zJ4" id="sJT-P9-Bf7"/>
-                        <outlet property="imageAuto" destination="U1H-cS-bS9" id="hGy-jj-0lD"/>
+                        <outlet property="imageAuto" destination="U1H-cS-bS9" id="Clw-b9-qSb"/>
                         <outlet property="manufacturerField" destination="OQK-gi-TvR" id="5lK-Cc-bLH"/>
                         <outlet property="nameAutoField" destination="rfH-T7-3Lq" id="TbC-Kn-Ams"/>
                         <outlet property="saveButton" destination="o7D-h5-nIy" id="bZ9-nt-T85"/>
@@ -361,7 +333,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIs-PP-eYS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="Osr-31-vsA" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1877.5999999999999" y="17.541229385307346"/>
+            <point key="canvasLocation" x="1791" y="14"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XrE-TC-WXa">
