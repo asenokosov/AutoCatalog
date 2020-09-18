@@ -46,6 +46,9 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         tableView.reloadData()
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering {
@@ -53,6 +56,25 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         }
         return autoDataBase.isEmpty ? 0 : autoDataBase.count
       }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        var autoList = AutoDataBase()
+        
+        if isFiltering {
+            autoList = filteredAuto[indexPath.row]
+        } else {
+            autoList = autoDataBase[indexPath.row]
+        }
+        let deleteAuto = UIContextualAction(style: .normal, title: "Удалить") {_, _, complete in
+            SaveManager.deleteObject(autoList)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.reloadData()
+            complete(true)
+        }
+        deleteAuto.backgroundColor = #colorLiteral(red: 1, green: 0.20458019, blue: 0.1013487829, alpha: 1)
+        let action = UISwipeActionsConfiguration(actions: [deleteAuto])
+        return action
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
