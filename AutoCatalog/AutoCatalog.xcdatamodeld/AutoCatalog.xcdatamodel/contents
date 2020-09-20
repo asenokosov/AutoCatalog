@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Entity" representedClassName="Entity" syncable="YES" codeGenerationType="class"/>
+    <entity name="AutoDataBase" representedClassName="AutoDataBase" syncable="YES" codeGenerationType="class">
+        <attribute name="carcaseAuto" optional="YES" attributeType="String"/>
+        <attribute name="imageAuto" optional="YES" attributeType="Binary"/>
+        <attribute name="manufacturerAuto" optional="YES" attributeType="String"/>
+        <attribute name="nameAuto" optional="YES" attributeType="String"/>
+        <attribute name="yearAuto" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
-        <element name="Entity" positionX="-63" positionY="-18" width="128" height="43"/>
+        <element name="AutoDataBase" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

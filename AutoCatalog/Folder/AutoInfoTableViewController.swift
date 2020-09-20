@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class AutoInfoTableViewController: UITableViewController {
     
@@ -19,6 +20,33 @@ class AutoInfoTableViewController: UITableViewController {
     @IBOutlet weak var manufacturerField: UITextField!
     @IBOutlet weak var yearField: UITextField!
     @IBOutlet weak var carcaseField: UITextField!
+    
+    @IBAction func saveButtonAction(_ sender: UIBarButtonItem) {
+        var image: UIImage?
+        
+        if imageIsChanged {
+            image = imageAuto.image
+        } else {
+            image = #imageLiteral(resourceName: "Photo")
+        }
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            let autoCatalog = AutoDataBase(context: context)
+            autoCatalog.nameAuto = nameAutoField.text
+            autoCatalog.yearAuto = yearField.text
+            autoCatalog.manufacturerAuto = manufacturerField.text
+            autoCatalog.carcaseAuto = carcaseField.text
+            autoCatalog.imageAuto = image?.pngData()
+            do {
+                try context.save()
+                print("Сохранение удалось!")
+                //tableView.reloadData()
+            } catch let error as NSError {
+                print("Не удалось сохранить данные \(error), \(error.userInfo)")
+            }
+            performSegue(withIdentifier: "unwindSegueFromAutoInfo", sender: self)
+           //tableView.reloadData()
+        }
+    }
     
     @IBOutlet weak var imageAuto: UIImageView!
     
@@ -63,32 +91,6 @@ class AutoInfoTableViewController: UITableViewController {
         }
     }
     
-    func savePlace() {
-        var image: UIImage?
-        
-        if imageIsChanged {
-            image = imageAuto.image
-        } else {
-            image = #imageLiteral(resourceName: "Photo")
-        }
-        
-        let imageAuto = image?.pngData()
-        let newAuto = AutoDataBase(nameAuto: nameAutoField.text!, yearAuto: yearField.text, imageAuto: imageAuto, carcaseAuto: carcaseField.text, manufacturerAuto: manufacturerField.text)
-        
-        if currentAuto != nil {
-            try! realm.write() {
-                currentAuto?.nameAuto = newAuto.nameAuto
-                currentAuto?.yearAuto = newAuto.yearAuto
-                currentAuto?.imageAuto = newAuto.imageAuto
-                currentAuto?.carcaseAuto = newAuto.carcaseAuto
-                currentAuto?.manufacturerAuto = newAuto.manufacturerAuto
-            }
-        } else {
-            
-            SaveManager.saveObject(newAuto)
-        }
-    }
-    
     private func editCell() {
         if currentAuto != nil {
             editNavigationBar()
@@ -104,7 +106,7 @@ class AutoInfoTableViewController: UITableViewController {
     private func editNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem{
             topItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
-            }
+        }
         navigationItem.leftBarButtonItem = nil
         title = currentAuto?.nameAuto
         saveButton.isEnabled = true

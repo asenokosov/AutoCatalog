@@ -81,9 +81,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="tableView" destination="ZTf-Gz-M0g" id="oER-ZN-xUK"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="edE-IG-qoi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -313,11 +310,12 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Nob-x4-b0p">
                             <connections>
                                 <action selector="cancelAction:" destination="FcR-I1-jRw" id="WWS-ml-VLc"/>
+                                <segue destination="PtJ-2l-2eS" kind="unwind" identifier="unwindSegueFromAutoInfo" unwindAction="closeWithSegue:" id="8e4-Rd-Ijm"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="o7D-h5-nIy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="o7D-h5-nIy">
                             <connections>
-                                <segue destination="Osr-31-vsA" kind="unwind" unwindAction="unwindSegue:" id="BZd-uP-Prm"/>
+                                <action selector="saveButtonAction:" destination="FcR-I1-jRw" id="GuH-Cb-bWD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -331,9 +329,9 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IIs-PP-eYS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="Osr-31-vsA" userLabel="Exit" sceneMemberID="exit"/>
+                <exit id="PtJ-2l-2eS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1791" y="14"/>
+            <point key="canvasLocation" x="1790" y="32"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XrE-TC-WXa">

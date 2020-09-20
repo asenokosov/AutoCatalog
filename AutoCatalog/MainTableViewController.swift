@@ -7,14 +7,18 @@
 //
 
 import UIKit
-import RealmSwift
+import CoreData
 
-class MainTableViewController: UITableViewController, UISearchResultsUpdating {
+class MainTableViewController: UITableViewController, UISearchResultsUpdating, NSFetchedResultsControllerDelegate {
     
-    private var autoDataBase: Results<AutoDataBase>!
-    private var filteredAuto: Results<AutoDataBase>!
+    var autoDataBase: [AutoDataBase] = []
+    var filteredAuto: [AutoDataBase] = []
+    var fetchResultController: NSFetchedResultsController<AutoDataBase>!
+    @IBAction func close(segue: UIStoryboardSegue) {
+    }
     
     let searchController = UISearchController(searchResultsController: nil)
+    
     var searchBarIsEmpty: Bool {
         guard let text = searchController.searchBar.text else { return false }
         return text.isEmpty
@@ -23,27 +27,74 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     var isFiltering: Bool {
         return searchController.isActive && !searchBarIsEmpty
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+       if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            let fetchRequest: NSFetchRequest<AutoDataBase> = AutoDataBase.fetchRequest()
+        do {
+            autoDataBase = try context.fetch(fetchRequest)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        autoDataBase = realm.objects(AutoDataBase.self)
         
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
         searchController.searchBar.placeholder = "Тут найдешь ты искомое"
         navigationItem.searchController = searchController
         definesPresentationContext = true
+        let fetchRequest: NSFetchRequest<AutoDataBase> = AutoDataBase.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "nameAuto", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+            fetchResultController.delegate = self
+            do {
+               try fetchResultController.performFetch()
+                autoDataBase = fetchResultController.fetchedObjects!
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert: guard let indexPath = newIndexPath else { break }
+        tableView.insertRows(at: [indexPath], with: .fade)
+        case .delete: guard let indexPath = indexPath else { break }
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        case .update: guard let indexPath = indexPath else { break }
+        tableView.reloadRows(at: [indexPath], with: .fade)
+        default:
+            tableView.reloadData()
+        }
+        autoDataBase = controller.fetchedObjects as! [AutoDataBase]
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
     
     func updateSearchResults(for searchController: UISearchController) {
-        filteredCars(searchController.searchBar.text!)
+        filteredCars(searchText: searchController.searchBar.text!)
         tableView.reloadData()
     }
     
-    private func filteredCars(_ searchText: String) {
-        filteredAuto = autoDataBase.filter("nameAuto CONTAINS[c] %@ OR yearAuto CONTAINS[c] %@", searchText , searchText)
-        tableView.reloadData()
+    private func filteredCars(searchText text: String) {
+        filteredAuto = autoDataBase.filter { (autoDataBase) -> Bool in
+            return (autoDataBase.nameAuto?.lowercased().contains(text.lowercased()))!
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -51,29 +102,10 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isFiltering {
+      if isFiltering {
             return filteredAuto.count
         }
         return autoDataBase.isEmpty ? 0 : autoDataBase.count
-      }
-    
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        var autoList = AutoDataBase()
-        
-        if isFiltering {
-            autoList = filteredAuto[indexPath.row]
-        } else {
-            autoList = autoDataBase[indexPath.row]
-        }
-        let deleteAuto = UIContextualAction(style: .normal, title: "Удалить") {_, _, complete in
-            SaveManager.deleteObject(autoList)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            tableView.reloadData()
-            complete(true)
-        }
-        deleteAuto.backgroundColor = #colorLiteral(red: 1, green: 0.20458019, blue: 0.1013487829, alpha: 1)
-        let action = UISwipeActionsConfiguration(actions: [deleteAuto])
-        return action
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -90,20 +122,47 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating {
         
         return cell
     }
-  
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        var autoList = AutoDataBase()
+        
+        if isFiltering {
+            autoList = filteredAuto[indexPath.row]
+        } else {
+            autoList = autoDataBase[indexPath.row]
+        }
+        let deleteAuto = UIContextualAction(style: .normal, title: "Удалить") {_, _, complete in
+            
+            if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+                let fetchRequest: NSFetchRequest<AutoDataBase> = AutoDataBase.fetchRequest()
+                if let autos = try? context.fetch(fetchRequest) {
+                    for _ in autos {
+                        context.delete(autoList)
+                    }
+                }
+                do {
+                    try context.save()
+                    self.autoDataBase.remove(at: indexPath.row)
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            complete(true)
+        }
+        deleteAuto.backgroundColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        let action = UISwipeActionsConfiguration(actions: [deleteAuto])
+        return action
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let auto = isFiltering ? filteredAuto[indexPath.row] : autoDataBase[indexPath.row]
+            let auto = isFiltering ? filteredAuto[indexPath.row] :  autoDataBase[indexPath.row]
             let newAutoVC = segue.destination as! AutoInfoTableViewController
             newAutoVC.currentAuto = auto
+            //tableView.reloadData()
         }
-    }
-    
-    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
-        guard let newautoVC = segue.source as? AutoInfoTableViewController else { return }
-        newautoVC.savePlace()
-        tableView.reloadData()
     }
 }
 
