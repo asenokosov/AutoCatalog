@@ -51,6 +51,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating, N
         let fetchRequest: NSFetchRequest<AutoDataBase> = AutoDataBase.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "nameAuto", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
+        
 
         if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
@@ -80,6 +81,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating, N
             tableView.reloadData()
         }
         autoDataBase = controller.fetchedObjects as! [AutoDataBase]
+        tableView.reloadData()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
@@ -137,13 +139,14 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating, N
                 let fetchRequest: NSFetchRequest<AutoDataBase> = AutoDataBase.fetchRequest()
                 if let autos = try? context.fetch(fetchRequest) {
                     for _ in autos {
+                        //tableView.deleteRows(at: [indexPath], with: .fade)
+                        //self.autoDataBase.remove(at: indexPath.row)
                         context.delete(autoList)
                     }
                 }
                 do {
                     try context.save()
-                    self.autoDataBase.remove(at: indexPath.row)
-                    tableView.deleteRows(at: [indexPath], with: .fade)
+                 
                 } catch {
                     print(error.localizedDescription)
                 }
@@ -161,7 +164,7 @@ class MainTableViewController: UITableViewController, UISearchResultsUpdating, N
             let auto = isFiltering ? filteredAuto[indexPath.row] :  autoDataBase[indexPath.row]
             let newAutoVC = segue.destination as! AutoInfoTableViewController
             newAutoVC.currentAuto = auto
-            //tableView.reloadData()
+            tableView.reloadData()
         }
     }
 }

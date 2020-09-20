@@ -89,6 +89,7 @@ class AutoInfoTableViewController: UITableViewController {
         } else {
             tableView.endEditing(true)
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     private func editCell() {
