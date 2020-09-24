@@ -116,8 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				C3132A0C251066E50092D5F4 /* AppDelegate.swift */,
-				C3132A4325106C010092D5F4 /* Folder */,
 				C3132A0E251066E50092D5F4 /* SceneDelegate.swift */,
+				C3132A4425106E490092D5F4 /* CustomTableViewCell.swift */,
+				C322BC1B25107BA3001E36A3 /* AutoInfoTableViewController.swift */,
 				C3132A3F251068290092D5F4 /* MainTableViewController.swift */,
 				C3132A12251066E50092D5F4 /* Main.storyboard */,
 				C3132A18251066E90092D5F4 /* Assets.xcassets */,
@@ -144,15 +145,6 @@
 				C3132A33251066EA0092D5F4 /* Info.plist */,
 			);
 			path = AutoCatalogUITests;
-			sourceTree = "<group>";
-		};
-		C3132A4325106C010092D5F4 /* Folder */ = {
-			isa = PBXGroup;
-			children = (
-				C3132A4425106E490092D5F4 /* CustomTableViewCell.swift */,
-				C322BC1B25107BA3001E36A3 /* AutoInfoTableViewController.swift */,
-			);
-			path = Folder;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
