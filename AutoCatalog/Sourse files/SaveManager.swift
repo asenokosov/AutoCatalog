@@ -11,12 +11,12 @@ import RealmSwift
 let realm = try! Realm()
 
 class SaveManager {
-    static func saveObject (_ autoDB: AutoDataBase) {
+    static func saveObject (_ autoDB: AutoDB) {
         try! realm.write {
             realm.add(autoDB)
         }
     }
-    static func deleteObject (_ autoDB: AutoDataBase) {
+    static func deleteObject (_ autoDB: AutoDB) {
         try! realm.write {
             realm.delete(autoDB)
         }

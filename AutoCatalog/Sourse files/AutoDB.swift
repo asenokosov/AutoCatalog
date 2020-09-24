@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-class AutoDataBase: Object {
+class AutoDB: Object {
     @objc dynamic var nameAuto = ""
     @objc dynamic var yearAuto: String?
     @objc dynamic var imageAuto: Data?

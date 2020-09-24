@@ -9,9 +9,13 @@
 import UIKit
 
 class AutoInfoTableViewController: UITableViewController {
-    
+    //MARK: Outlet/Action
     var imageIsChanged = false
-    var currentAuto: AutoDataBase?
+    var currentAuto: AutoDB?
+	
+	@IBAction func cancelAction(_ sender: Any) {
+		dismiss(animated: true)
+	}
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
@@ -22,6 +26,8 @@ class AutoInfoTableViewController: UITableViewController {
     
     @IBOutlet weak var imageAuto: UIImageView!
     
+	//MARK: View did load
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,6 +39,8 @@ class AutoInfoTableViewController: UITableViewController {
         carcaseField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         editCell()
     }
+	
+	//MARK: Action Sheet
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 4 {
@@ -61,9 +69,12 @@ class AutoInfoTableViewController: UITableViewController {
         } else {
             tableView.endEditing(true)
         }
+		tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func savePlace() {
+	//MARK: Save Auto
+	
+    func saveAuto() {
         var image: UIImage?
         
         if imageIsChanged {
@@ -73,7 +84,7 @@ class AutoInfoTableViewController: UITableViewController {
         }
         
         let imageAuto = image?.pngData()
-        let newAuto = AutoDataBase(nameAuto: nameAutoField.text!, yearAuto: yearField.text, imageAuto: imageAuto, carcaseAuto: carcaseField.text, manufacturerAuto: manufacturerField.text)
+        let newAuto = AutoDB(nameAuto: nameAutoField.text!, yearAuto: yearField.text, imageAuto: imageAuto, carcaseAuto: carcaseField.text, manufacturerAuto: manufacturerField.text)
         
         if currentAuto != nil {
             try! realm.write() {
@@ -89,6 +100,8 @@ class AutoInfoTableViewController: UITableViewController {
         }
     }
     
+	//MARK: Edit Cell
+	
     private func editCell() {
         if currentAuto != nil {
             editNavigationBar()
@@ -101,6 +114,9 @@ class AutoInfoTableViewController: UITableViewController {
             manufacturerField.text = currentAuto?.manufacturerAuto
         }
     }
+	
+	//MARK: Navigation Bar
+	
     private func editNavigationBar() {
         if let topItem = navigationController?.navigationBar.topItem{
             topItem.backBarButtonItem = UIBarButtonItem.init(title: "", style: .plain, target: nil, action: nil)
@@ -109,11 +125,9 @@ class AutoInfoTableViewController: UITableViewController {
         title = currentAuto?.nameAuto
         saveButton.isEnabled = true
     }
-    
-    @IBAction func cancelAction(_ sender: Any) {
-        dismiss(animated: true)
-    }
 }
+
+//MARK: Extension Image
 
 extension AutoInfoTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -135,6 +149,8 @@ extension AutoInfoTableViewController: UIImagePickerControllerDelegate, UINaviga
         dismiss(animated: true)
     }
 }
+
+//MARK: Extension textField
 
 extension AutoInfoTableViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

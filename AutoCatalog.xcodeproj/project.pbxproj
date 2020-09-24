@@ -125,8 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				C3132A0C251066E50092D5F4 /* AppDelegate.swift */,
-				C3132A4325106C010092D5F4 /* Folder */,
 				C3132A0E251066E50092D5F4 /* SceneDelegate.swift */,
+				C3132A4325106C010092D5F4 /* Sourse files */,
 				C3132A3F251068290092D5F4 /* MainTableViewController.swift */,
 				C3132A12251066E50092D5F4 /* Main.storyboard */,
 				C3132A18251066E90092D5F4 /* Assets.xcassets */,
@@ -155,7 +155,7 @@
 			path = AutoCatalogUITests;
 			sourceTree = "<group>";
 		};
-		C3132A4325106C010092D5F4 /* Folder */ = {
+		C3132A4325106C010092D5F4 /* Sourse files */ = {
 			isa = PBXGroup;
 			children = (
 				C3132A4425106E490092D5F4 /* CustomTableViewCell.swift */,
@@ -163,7 +163,7 @@
 				C3A27D1E2512099D00A4DFB6 /* SaveManager.swift */,
 				C322BC1B25107BA3001E36A3 /* AutoInfoTableViewController.swift */,
 			);
-			path = Folder;
+			path = "Sourse files";
 			sourceTree = "<group>";
 		};
 		F7F32471E0D6C033FF3E56C7 /* Pods */ = {
@@ -240,7 +240,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = Home;
 				TargetAttributes = {
 					C3132A08251066E50092D5F4 = {
@@ -438,6 +438,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -498,6 +499,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
